@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<script src="eel.js"></script>
+<script src="resource/main.js"></script>
+ <link href="resource/style.css" rel="stylesheet">
+ <link rel="icon" href="resource/Picture3.ico">
+<head>
+    <meta charset="UTF-8">
+    <title>Meme wallet</title>
+</head>
+<body>
+	<div class="tab" onclick="changeToIndex();">MANAGE TAGS</div>
+
+	<form class="searchForm" id="form">
+		<label style="font-family: Calibri; font-style: italic; margin-left: 10px;">Search by tag:</label>
+		<input class="input1" style="padding-right:10%;" id="theTags">
+		<div class="addButton" onclick="search();">search</div>
+	</form>
+
+	<div class="tag" id="blankTag" style="display:none;">
+		<img src="resource/DeleteIcon1.png" style="width:15px; height:auto;">
+		<p style="display:inline; text-align: center;">blank</p>
+	</div>
+
+	<div style="display:none;" id="blankMeme">
+		<img class="img1" id="theImage">
+		<div id="theMeme" class="memeTitle">meme:</div>
+		<div class="tagsBox" id="tagsBox">
+
+		</div>
+	</div>
+
+	
+
+	<!--
+		<div class="arrows">
+			<img src="previousArrow.jpg" onclick="eel.otherMeme(0);">
+			<img src="nextArrow.jpg" onclick="eel.otherMeme(1);">
+		</div>
+		-->
+	<!--
+	<button class="arrowButton" style="background-image: 'RightArrow.jpg';" onclick="eel.otherMeme(1);">Next</button>
+	<button class="arrowButton" style="background-image: 'LeftArrow.jpg';" onclick="eel.otherMeme(0);">Previous</button>
+	-->
+</body>
+<!--<script>setEvent();</script>-->
+<!--<script>eel.start();</script>-->
+<!--<script>addTagTEST(15);</script>-->
+<!--<script>changeMessage('errorj');</script>-->
+</html>
