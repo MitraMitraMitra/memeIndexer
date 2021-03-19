@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path = dir_path + '\web'
 x = list(os.walk(dir_path))
 for file in x[0][2]:
-    if (file.endswith('.jpg') or file.endswith('.png')) and (file != 'previousArrow.jpg' and file != 'nextArrow.jpg'):
+    if (file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg')) and (file != 'previousArrow.jpg' and file != 'nextArrow.jpg'):
         #meme = dir_path +"\ "[0] +str(file)
         #print(file)
         meme = str(file)
@@ -40,7 +40,7 @@ for i in f:
     #print(memesTags[j])
     #j = j + 1
 #memesTags[0].remove('meme1tag1')
-#print(memesTags)
+#print(len(memesTags))
 #f.truncate(0)
 f.close()
 
@@ -67,8 +67,20 @@ for i in memes:
         #print(dir_path+'\ '[0]+i, dir_path+'\ '[0]+str(uuid.uuid1())+'.'+i[-3:len(i)])
         print("I found that",i,"is not in the memes list, so I will index it now.")
         id = str(uuid.uuid4())
-        os.rename(dir_path+'\ '[0]+i, dir_path+'\ '[0]+id+'.'+i[-3:len(i)])
-        memesTags.append([id+'.'+i[-3:len(i)]])
+        k = 0
+        ends_with = ''
+        while k<len(i) and i[k]!='.':
+            k = k + 1
+
+        k = k + 1
+        while k < len(i):
+            ends_with = ends_with + i[k]
+            k = k + 1
+        #print(i,"ends with",ends_with)
+        os.rename(dir_path + '\ '[0] + i, dir_path + '\ '[0] + id + '.' + ends_with)
+        memesTags.append([id + '.' + ends_with])
+        #os.rename(dir_path+'\ '[0]+i, dir_path+'\ '[0]+id+'.'+i[-3:len(i)])
+        #memesTags.append([id+'.'+i[-3:len(i)]])
         #newMemes.append([id+'.'+i[-3:len(i)]])
 
 
@@ -149,7 +161,7 @@ def close_callback(route, websockets):
             memesTags2.append(" ".join(i) + '\n')
         f.writelines(memesTags2)
         f.close()
-        exit()
+        sys.exit()
     else:
         check = 0
 
@@ -158,6 +170,11 @@ eel.init(dir_path)
 #print("I will now ask JS to show image",memesTags[index][0])
 
 #eel.draw(f)
-
+#try:
 eel.start('search.html',size = (698,407),block=True,close_callback=close_callback)
+#except (SystemExit, MemoryError, KeyboardInterrupt):
+      #Handle errors and the potential hanging python.exe process
+#      os.system('taskkill /F /IM memeWallet.exe /T')
+#input = ""
+
 #print("Yo")
