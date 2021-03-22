@@ -1,7 +1,7 @@
 import eel
 import os
 import uuid
-
+import sys
 memes = []
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
